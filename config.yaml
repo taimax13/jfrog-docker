@@ -1,0 +1,45 @@
+localRepositories: #Local repositories configuration
+foo-helm-prod-us: #The local repository name
+type: maven #The package type
+checksumPolicyType: server-generated-checksums #Determines how Artifactory behaves when a client checksum for a deployed resource is missing or conflicts with the locally calculated checksum
+description: "Hello world" #A free text field that describes the content and purpose of the repository
+dockerApiVersion: V1 #Only for Docker repositories. The Docker API version
+excludesPattern: #Provides a way to filter out specific repositories when trying to resolve the location of different artifacts (Ant-like pattern)
+includesPattern: #Provides a way to filter out specific repositories when trying to resolve the location of different artifacts (Ant-like pattern)
+maxUniqueSnapshots: 0 #Only for Maven and NuGet repositories. Specifies the maximum number of unique snapshots of the same artifact that should be stored. Once this number is reached and a new snapshot is uploaded, the oldest stored snapshot is removed automatically. Default: 0
+maxUniqueTags: 0 #Only for Docker repositories. Specifies the maximum number of unique snapshots of the same artifact that should be stored. Once this number is reached and a new snapshot is uploaded, the oldest stored snapshot is removed automatically. Default: 0
+notes: "Hello world 2" #A free text field to add additional notes about the repository
+repoLayout: maven-2-default #Sets the layout that the repository should use for storing and identifying modules. The layout usually varies for the different package types
+snapshotVersionBehavior: unique #Specifies the naming convention for Maven SNAPSHOT versions
+xray: #Xray settings for the certain repository
+enabled: false #Indicated whether the repository will be indexed and scanned by Xray
+yumGroupFileNames: yumGroup1 #A comma-separated list of YUM group files associated with your RPM packages
+yumRootDepth: 0 #Informs Artifactory under which level of directory to search for RPMs and save the repodata directory
+blackedOut: false #If set, Artifactory ignores this repository when trying to resolve artifacts. The repository is also not available for download or deployment of artifacts
+calculateYumMetadata: false #When set, RPM metadata calculation is automatically triggered by the actions described above
+debianTrivialLayout: false #Indicates whether the Debian repository uses a trivial layout
+enableFileListsIndexing: false #When set, Artifactory will index and maintain an RPM filelists.xml metadata file
+forceNugetAuthentication: false #When set, if anoynmous access is enabled on the Artifactory instance, this will override the behavior and will force client to authentiacate
+handleReleases: true #If set, Artifactory allows you to deploy release artifacts into this repository
+handleSnapshots: true #If set, Artifactory allows you to deploy snapshot artifacts into this repository
+suppressPomConsistencyChecks: true #When deploying an artifact to a repository, Artifactory verifies that the value set for groupId:artifactId:version in the POM is consistent with the deployed path. If there is a conflict between these then Artifcatory will reject the deployment.
+virtualRepositories: #Virtual repositories configuration
+foo-helm-prod-us: #The virtual repository name
+type: maven #The package type
+repositories: #A list of local and remote repositories that will be aggregated under this virtual repository
+description: "" #A free text field that describes the content and purpose of the repository
+notes: "" #A free text field to add additional notes about the repository
+dockerApiVersion: V1 #Only for Docker repositories. The Docker API version
+includesPattern: #Provides a way to filter out specific repositories when trying to resolve the location of different artifacts (Ant-like pattern)
+excludesPattern: #Provides a way to filter out specific repositories when trying to resolve the location of different artifacts (Ant-like pattern)
+externalDependencies: #Only for npm repositories. External dependencies configuration.
+enabled: false #When set, depenency rewrite for the specified npm repository will be enabled
+patterns: #Optional include patterns to match external dependencies. Ant-style path expressions are supported (*, **, ?). For example, specifying **/github.com/** will only allow external dependencies from github.com host
+- "**/github.com/**"
+keyPair: keypairvirtual1 #Only for Maven repositories, for WebStart and Jar signing. The alias of the keypair configured in the Signing Keys page
+pomRepositoryReferencesCleanupPolicy: discard_any_reference #Only for Maven repositories. (1) Discard Active References - Removes repository elements that are declared directly under project or under a profile in the same POM that is activeByDefault. (2) Discard Any References - Removes all repository elements regardless of whether they are included in an active profile or not. (3) Nothing - Does not remove any repository elements declared in the POM.
+repoLayout: maven-2-default #Sets the layout that the repository should use for storing and identifying modules
+virtualCacheConfig:
+virtualRetrievalCachePeriodSecs: 600 #This value refers to the number of seconds to cache metadata files before checking for newer versions on aggregated repositories. A value of 0 indicates no caching
+artifactoryRequestsCanRetrieveRemoteArtifacts: false #Determines whether artifact requests coming from other instance of Artifactory can be fulfilled by accessing this virtual repository's remote repositories, or by only accessing its caches (default)
+forceNugetAuthentication: false
