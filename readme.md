@@ -30,3 +30,9 @@ Check Artifactory Log.
 And finally you can update the repository configuration making the API call here:
 
     curl -uadmin:password -XPATCH "http://localhost:8081/artifactory/api/system/configuration" -H "Content-Type:application/yaml" -T config.yml            
+    
+    
+Please NOTE! ```DEFAULT USER : admin    ```
+```Default password: password```    
+
+PLEASE ALSO NOTE ON THE FREE TRAIL YOU CAN CONFIGURE ONLY CONAN OR GENERIC REPOSITORIES
