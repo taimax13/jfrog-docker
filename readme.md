@@ -36,3 +36,13 @@ Please NOTE! ```DEFAULT USER : admin    ```
 ```Default password: password```    
 
 PLEASE ALSO NOTE ON THE FREE TRAIL YOU CAN CONFIGURE ONLY CONAN OR GENERIC REPOSITORIES
+
+To access the remote/local repository:
+
+    http://my-remote-site:8081/artifactory/api/docker/<repository key> -how do I know my repository key
+    
+To check configuration:
+
+    curl -uadmin:password "http://localhost:8081/artifactory/api/system/configuration"
+    
+What to do if the password is changed and lost?         
