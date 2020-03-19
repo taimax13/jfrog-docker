@@ -45,4 +45,14 @@ To check configuration:
 
     curl -uadmin:password "http://localhost:8081/artifactory/api/system/configuration"
     
-What to do if the password is changed and lost?         
+Re-setting the password for artifactory:
+The file "bootstrap.creds" need to be placed under JFROG_HOME/artifactory/var/etc/access
+
+    chmod 600 bootstrap.creds
+             
+restart artifactory instance.
+
+Changing password:
+
+    curl -XPATCH -uaccess-admin:password http://localhost:8040/access/api/v1/users/access-admin -H "Content-Type: application/json" -d '{ "password": "newStrongPassword" }'
+
